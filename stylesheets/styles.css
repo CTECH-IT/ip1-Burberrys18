@@ -1,1 +1,11 @@
-/* Put your CSS here */
+
+* {
+    padding: 10;
+    margin: 0;
+}
+
+canvas {
+    background: burlywood;
+    display: red;
+    margin: auto;
+}
