@@ -1,11 +1,11 @@
 
 * {
-    padding: 10;
+    padding: 0;
     margin: 0;
 }
 
 canvas {
     background: burlywood;
-    display: red;
-    margin: auto;
+    display: block;
+    margin:0 auto;
 }
