@@ -45,6 +45,10 @@ let int = setInterval(draw, 1000);
 let er = setInterval(draw, 700);
 let val = setInterval(draw, 500);
 
+//setting timeeouts//
+let time = setTimeout(draw, 20000);
+
+
 function drawScore() {
     ctx.font = "18px Arial";
     ctx.fillStyle = "blue"; 
