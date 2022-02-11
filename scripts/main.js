@@ -11,6 +11,9 @@ let mouseClicked = false;
 
 let score = 0;
 
+//trying out high score//
+let highscore = localStorage.getItem("highscore");
+
 let timer = 70;
 
 function drawBall() {
@@ -31,6 +34,15 @@ function draw() {
     y = Math.random() * canvas.height;
 
     drawScore();
+    drawHighScore();
+    if(highscore !== 0){
+        if (score > highscore) {
+            localStorage.setItem("highscore", score);      
+        }
+    }
+    else{
+        localStorage.setItem("highscore", score);
+    }
 
     drawTimer();
 }
@@ -42,8 +54,16 @@ let endInterval = setInterval(draw, 700);
 function drawScore() {
     ctx.font = "18px Arial";
     ctx.fillStyle = "blue"; 
-    ctx.fillText("Score: " + score, 280, 20);
+    ctx.fillText("Score: " + score, 275, 20);
 }
+
+function drawHighScore() {
+    ctx.font = "18px Roboto";
+    ctx.fillStyle = "black";
+    ctx.fillText("High score: " + highscore, 260, 40);
+}
+
+
 
 function drawTimer() {
     ctx.font = "18px Arial";
