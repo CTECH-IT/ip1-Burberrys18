@@ -11,7 +11,6 @@ let mouseClicked = false;
 
 let score = 0;
 
-//trying out high score//
 let highscore = localStorage.getItem("highscore");
 
 let timer = 70;
@@ -34,6 +33,8 @@ function draw() {
     y = Math.random() * canvas.height;
 
     drawScore();
+
+    //adding high score//
     drawHighScore();
     if(highscore !== 0){
         if (score > highscore) {
@@ -47,9 +48,7 @@ function draw() {
     drawTimer();
 }
 
-let startInterval = setInterval(draw, 1200);
-let interval = setInterval(draw, 950);
-let endInterval = setInterval(draw, 700);
+let interval = setInterval(draw, 900);
 
 function drawScore() {
     ctx.font = "18px Arial";
@@ -75,15 +74,6 @@ function drawTimer() {
 function countDown() {
     timer--;
     
-    if(timer < 70){
-        startInterval = setInterval(draw,1200);
-    }else if(timer < 40) {
-        clearInterval(startInterval)
-        interval = setInterval(draw, 950);
-    }else if(timer < 15) {
-        clearInterval(interval)
-        endInterval = setInterval(draw, 700);
-    }
     if (timer==0) {
         alert("Game Over");
         document.location.reload();
