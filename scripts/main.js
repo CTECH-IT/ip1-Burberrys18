@@ -13,7 +13,7 @@ let score = 0;
 
 let highscore = localStorage.getItem("highscore");
 
-let timer = 70;
+let timer = 30;
 
 function drawBall() {
     ctx.beginPath();
@@ -48,7 +48,7 @@ function draw() {
     drawTimer();
 }
 
-let interval = setInterval(draw, 900);
+let interval = setInterval(draw, 800);
 
 function drawScore() {
     ctx.font = "18px Arial";
@@ -75,7 +75,7 @@ function countDown() {
     timer--;
     
     if (timer==0) {
-        alert("Game Over");
+        alert("Game Over!", "Score: ", score);
         document.location.reload();
         clearInterval(time);
     }
