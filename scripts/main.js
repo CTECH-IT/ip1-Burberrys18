@@ -30,30 +30,14 @@ function draw() {
     x = Math.random() * canvas.width;
     y = Math.random() * canvas.height;
 
+   
+
     drawScore();
 
     drawTimer();
 }
 
-let interval = setInterval(draw, 1200);
-let halfInterval =  setInterval(draw, 950);
-let endInterval =  setInterval(draw, 700);
-
-if (timer < 70) {
-    setInterval(draw, 1200);
-}
-
-else if (timer < 40) {
-    clearInterval(interval);
-    setInterval(draw, 950);
-}
-
-else if (timer < 15) {
-    clearInterval(halfInterval);
-    setInterval(draw, 700);
-}
-
-
+let currentInterval;
 
 function drawScore() {
     ctx.font = "18px Arial";
@@ -70,6 +54,16 @@ function drawTimer() {
 //counting down function//
 function countDown() {
     timer--;
+    
+    if(timer < 15){
+        currentInterval = setInterval(draw,700);
+    }else if(timer < 40) {
+        clearInterval(currentInterval)
+        currentInterval = setInterval(draw, 950);
+    }else if(timer < 70) {
+        clearInterval(currentInterval)
+        currentInterval = setInterval(draw, 1200);
+    }
     if (timer==0) {
         alert("Game Over");
         document.location.reload();
@@ -82,16 +76,16 @@ let time = setInterval(countDown, 1000);
 document.addEventListener("mousedown", mouseDownHandler, false);
 document.addEventListener("mouseup", mouseUpHandler, false);
 
-function mouseDownHandler(e) {
-    if (e.button==true) {
+function mouseDownHandler(mouse) {
+    if (mouse.button==true) {
         mouseClicked = true;
         //if mouseClicked is true, add on the score by 1//
         score++;
     }
 }
 
-function mouseUpHandler(e) {
-    if (e.button==true) {
+function mouseUpHandler(mouse) {
+    if (mouse.button==true) {
         mouseClicked = false;
     }
 }
